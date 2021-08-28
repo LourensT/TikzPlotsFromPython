@@ -1,5 +1,6 @@
 import atexit
 from typing import Dict, List
+import os
 
 # import the local style dictionary from style.py
 from style import style
@@ -81,11 +82,22 @@ class GenerateTikz:
 
         self.f.close()
 
+def generate_plot(series: List[Dict], labels : List[int], 
+                            style="style.txt", 
+                            log=False,
+                            line=False):
+
+    assert len(series) == len(labels), "number of labels does comply with number of series"
+
+    if line:
+        assert len(series) <= 8, "too many series (maximum 8 for lines)"
+    else:
+        assert len(series) <= 5, "too many series (maximum 5 for lines)"
 
 
 
 if __name__ == "__main__":
-    cfg = GenerateTikz("hey.tikz")
+    cfg = GenerateTikz(os.getcwd() + "\\test\\hey.tikz")
     #args=["grid = major"]
     cfg.setConfiguration(1980, 2014, 0, 10000, False, True)
     cfg.addSeries({1980 : 900, 2014 : 9000}, "hello")
