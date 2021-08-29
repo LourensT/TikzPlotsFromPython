@@ -3,7 +3,7 @@ from typing import Dict, List
 import os
 
 # import the local style dictionary from style.py
-from style import style
+from . import style
 
 class GenerateTikz:
 
