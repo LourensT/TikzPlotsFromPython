@@ -9,7 +9,7 @@ class GenerateTikz:
 
     counter = 0
 
-    def __init__(self, fp, include_colors = False):
+    def __init__(self, fp, include_colors = False, documentation=""):
         # set the style that was imported
         self.style = style
 
@@ -20,7 +20,11 @@ class GenerateTikz:
         # make sure file is closed
         atexit.register(self.finishFile)
 
-        # write first constants
+        # write given documentation line
+        if documentation != "":
+            self.f.write("%" + documentation + "\n")
+
+        # write first introductory lines
         self.f.write(self.style["start_lines"])
 
         if include_colors:
@@ -93,8 +97,6 @@ def generate_plot(series: List[Dict], labels : List[int],
         assert len(series) <= 8, "too many series (maximum 8 for lines)"
     else:
         assert len(series) <= 5, "too many series (maximum 5 for lines)"
-
-
 
 if __name__ == "__main__":
     cfg = GenerateTikz(os.getcwd() + "\\test\\hey.tikz")
