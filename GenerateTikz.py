@@ -3,7 +3,7 @@ from typing import Dict, List
 import os
 
 # import the local style dictionary from style.py
-from style import style
+from . import style
 
 class GenerateTikz:
 
@@ -11,7 +11,7 @@ class GenerateTikz:
 
     def __init__(self, fp, include_colors = False, documentation=""):
         # set the style that was imported
-        self.style = style
+        self.style = style.style
 
         # open .tikz file
         assert '.tikz' in fp, "should be .tikz file"
@@ -33,6 +33,8 @@ class GenerateTikz:
     def setConfiguration(self,  xmin, xmax, 
                                 ymin, ymax, 
                                 xlog: bool, ylog: bool, 
+                                xlabel = "",
+                                ylabel = "", 
                                 args: List[str] = []):
 
         # write constant part of configuration
@@ -48,6 +50,12 @@ class GenerateTikz:
             self.f.write(", \n{}={}".format("xmode", "log"))
         if ylog:
             self.f.write(", \n{}={}".format("ymode", "log"))
+
+        if xlabel != "":
+            self.f.write(", \n{}={}".format("xlabel", "{" + xlabel + "}"))
+        if ylabel != "":
+            self.f.write(", \n{}={}".format("ylabel", "{" + ylabel + "}"))
+
 
         # write additional option configs
         for item in args:
@@ -98,6 +106,8 @@ def generate_plot(fp : str, series: List[Dict], labels : List[int],
     else:
         assert len(series) <= 5, "too many series (maximum 5 for lines)"
     
+    raise NotImplementedError
+
     raise NotImplementedError
 
 if __name__ == "__main__":
