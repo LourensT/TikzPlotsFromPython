@@ -86,7 +86,7 @@ class GenerateTikz:
 
         self.f.close()
 
-def generate_plot(series: List[Dict], labels : List[int], 
+def generate_plot(fp : str, series: List[Dict], labels : List[int], 
                             style="style.txt", 
                             log=False,
                             line=False):
@@ -97,6 +97,8 @@ def generate_plot(series: List[Dict], labels : List[int],
         assert len(series) <= 8, "too many series (maximum 8 for lines)"
     else:
         assert len(series) <= 5, "too many series (maximum 5 for lines)"
+    
+    raise NotImplementedError
 
 if __name__ == "__main__":
     cfg = GenerateTikz(os.getcwd() + "\\test\\hey.tikz")
