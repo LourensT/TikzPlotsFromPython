@@ -10,8 +10,8 @@ style = {
 
     "scatter_styling" :
 [
-    "[color=mycolor1, line width = 2pt, mark size=2pt, mark=diamond*, only marks, mark options={solid, mycolor1}]",
     "[color=mycolor2, line width = 2pt, mark size=1.5pt, mark=*, only marks, mark options={solid, mycolor2}]",
+    "[color=mycolor1, line width = 2pt, mark size=2pt, mark=diamond*, only marks, mark options={solid, mycolor1}]",
     "[color=mycolor3, line width = 2pt, mark size=1.5pt, mark=square*, only marks, mark options={solid, mycolor3}]", 
     "[color=mycolor4, line width = 2pt, mark size=1.5pt, mark=triangle*, only marks, mark options={solid, mycolor4}]"
 ],
